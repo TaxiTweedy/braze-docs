@@ -1,8 +1,7 @@
 ---
-hidden: true
 nav_title: Custom View Controller
 article_title: In-App Message in a Custom View Controller for iOS
-platform: iOS
+platform: Swift
 page_order: 7
 description: "This reference article covers how to leverage a custom in-app messaging view controller for your iOS application."
 channel:

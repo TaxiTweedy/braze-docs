@@ -1,8 +1,7 @@
 ---
-hidden: true
 nav_title: Custom App Store review prompt
 article_title: Custom App Store review prompt
-platform: iOS
+platform: Swift
 page_order: 4
 description: "This reference article shows how to set up a custom App Store review prompt."
 channel:
@@ -21,20 +20,6 @@ Creating a campaign to ask users for an App Store review is a popular usage of i
 Start by setting the [in-app message delegate][30] in your app. Next, implement the following delegate method to disable the default App Store review message:
 
 {% tabs %}
-{% tab OBJECTIVE-C %}
-
-```objc
-- (ABKInAppMessageDisplayChoice)beforeInAppMessageDisplayed:(ABKInAppMessage *)inAppMessage {
-  if (inAppMessage.extras != nil && inAppMessage.extras[@"Appstore Review"] != nil) {
-    [[UIApplication sharedApplication] openURL:inAppMessage.uri options:@{} completionHandler:nil];
-    return ABKDiscardInAppMessage;
-  } else {
-    return ABKDisplayInAppMessageNow;
-  }
-}
-```
-
-{% endtab %}
 {% tab swift %}
 
 ```swift
@@ -44,6 +29,20 @@ func before(inAppMessageDisplayed inAppMessage: ABKInAppMessage) -> ABKInAppMess
     return ABKInAppMessageDisplayChoice.discardInAppMessage
   } else {
     return ABKInAppMessageDisplayChoice.displayInAppMessageNow
+  }
+}
+```
+
+{% endtab %}
+{% tab OBJECTIVE-C %}
+
+```objc
+- (ABKInAppMessageDisplayChoice)beforeInAppMessageDisplayed:(ABKInAppMessage *)inAppMessage {
+  if (inAppMessage.extras != nil && inAppMessage.extras[@"Appstore Review"] != nil) {
+    [[UIApplication sharedApplication] openURL:inAppMessage.uri options:@{} completionHandler:nil];
+    return ABKDiscardInAppMessage;
+  } else {
+    return ABKDisplayInAppMessageNow;
   }
 }
 ```

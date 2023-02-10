@@ -1,8 +1,7 @@
 ---
-hidden: true
 nav_title: SharePlay
 article_title: SharePlay In-App Message Implementation Guide
-platform: iOS
+platform: Swift
 page_order: 1
 description: "This advanced SharePlay implementation guide expands on the video use case provided in the in-app message advanced implementation guide. SharePlay is a newly released feature that enables iOS 15 Facetime users to have a shared media experience across their devices, offering real-time audio and video syncing."
 channel:

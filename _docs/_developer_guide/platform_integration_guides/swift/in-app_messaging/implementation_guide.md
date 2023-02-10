@@ -1,8 +1,7 @@
 ---
-hidden: true
 nav_title: Advanced Implementation (Optional)
 article_title: In-App Message Implementation Guide for iOS (Optional)
-platform: iOS
+platform: Swift
 page_order: 6
 description: "This advanced implementation guide covers iOS in-app message code considerations, three use cases built by our team, and accompanying code snippets."
 channel:

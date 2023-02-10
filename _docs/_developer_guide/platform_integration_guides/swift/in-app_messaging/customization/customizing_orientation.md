@@ -1,8 +1,7 @@
 ---
-hidden: true
 nav_title: Customizing Orientation
 article_title: Customizing In-App Message Orientation for iOS
-platform: iOS
+platform: Swift
 page_order: 3
 description: "This reference article covers how to set in-app message orientation for your iOS application."
 channel:

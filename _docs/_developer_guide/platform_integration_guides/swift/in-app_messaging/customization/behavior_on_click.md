@@ -1,8 +1,7 @@
 ---
-hidden: true
 nav_title: Custom On Click Behavior
 article_title: Customizing In-App Message On Click Behavior for iOS
-platform: iOS
+platform: Swift
 page_order: 5
 description: "This reference article covers custom in-app messaging on-click behavior for your iOS application."
 channel:
@@ -11,24 +10,20 @@ channel:
 
 # Customizing in-app message behavior on click
 
-{% alert note %}
-This article includes information on News Feed, which is being deprecated. Braze recommends that customers who use our News Feed tool move over to our Content Cards messaging channel—it's more flexible, customizable, and reliable. Check out the [migration guide]({{site.baseurl}}/user_guide/message_building_by_channel/content_cards/migrating_from_news_feed/) for more.
-{% endalert %}
-
 The `inAppMessageClickActionType` property on the `ABKInAppMessage` defines the action behavior after the in-app message is clicked. This property is read-only. If you want to change the in-app message's click behavior, you can call the following method on `ABKInAppMessage`:
 
 {% tabs %}
-{% tab OBJECTIVE-C %}
-
-```objc
-[inAppMessage setInAppMessageClickAction:clickActionType withURI:uri];
-```
-
-{% endtab %}
 {% tab swift %}
 
 ```swift
 inAppMessage.setInAppMessageClickAction(clickActionType: clickActionType, withURI: uri)
+```
+
+{% endtab %}
+{% tab OBJECTIVE-C %}
+
+```objc
+[inAppMessage setInAppMessageClickAction:clickActionType withURI:uri];
 ```
 
 {% endtab %}
@@ -48,17 +43,17 @@ The `inAppMessageClickActionType` can be set to one of the following values:
 The following [`ABKInAppMessageUIDelegate`][34] delegate method is called when an in-app message is clicked:
 
 {% tabs %}
-{% tab OBJECTIVE-C %}
-
-```objc
-- (BOOL) onInAppMessageClicked:(ABKInAppMessage *)inAppMessage;
-```
-
-{% endtab %}
 {% tab swift %}
 
 ```swift
 func onInAppMessageClicked(inAppMessage: ABKInAppMessage!) -> Bool
+```
+
+{% endtab %}
+{% tab OBJECTIVE-C %}
+
+```objc
+- (BOOL) onInAppMessageClicked:(ABKInAppMessage *)inAppMessage;
 ```
 
 {% endtab %}
@@ -69,6 +64,17 @@ func onInAppMessageClicked(inAppMessage: ABKInAppMessage!) -> Bool
 For clicks on in-app message buttons and HTML in-app message buttons (i.e., links), [`ABKInAppMessageUIDelegate`][34] includes the following delegate methods:
 
 {% tabs %}
+{% tab swift %}
+
+```swift
+func onInAppMessageButtonClicked(inAppMessage: ABKInAppMessageImmersive!,
+                                 button: ABKInAppMessageButton) -> Bool
+
+func onInAppMessageHTMLButtonClicked(inAppMessage: ABKInAppMessageHTML!,
+                                     clickedURL: URL, buttonID: String) -> Bool
+```
+
+{% endtab %}
 {% tab OBJECTIVE-C %}
 
 ```objc
@@ -81,17 +87,6 @@ For clicks on in-app message buttons and HTML in-app message buttons (i.e., link
 ```
 
 {% endtab %}
-{% tab swift %}
-
-```swift
-func onInAppMessageButtonClicked(inAppMessage: ABKInAppMessageImmersive!,
-                                 button: ABKInAppMessageButton) -> Bool
-
-func onInAppMessageHTMLButtonClicked(inAppMessage: ABKInAppMessageHTML!,
-                                     clickedURL: URL, buttonID: String) -> Bool
-```
-
-{% endtab %}
 {% endtabs %}
 
 Each method returns a `BOOL` value to indicate if Braze should continue to execute the click action.
@@ -99,6 +94,18 @@ Each method returns a `BOOL` value to indicate if Braze should continue to execu
 To access the click action type of a button in a delegate method, you can use the following code:
 
 {% tabs %}
+{% tab swift %}
+
+```swift
+if inAppMessage is ABKInAppMessageImmersive {
+      let immersiveIAM = inAppMessage as! ABKInAppMessageImmersive;
+      for button in inAppMessage.buttons as! [ABKInAppMessageButton]{
+        // Button action type is accessible via button.buttonClickActionType
+      }
+    }
+```
+
+{% endtab %}
 {% tab OBJECTIVE-C %}
 
 ```objc
@@ -109,18 +116,6 @@ if ([inAppMessage isKindOfClass:[ABKInAppMessageImmersive class]]) {
          // Button action type is accessible via button.buttonClickActionType
       }
    }
-```
-
-{% endtab %}
-{% tab swift %}
-
-```swift
-if inAppMessage is ABKInAppMessageImmersive {
-      let immersiveIAM = inAppMessage as! ABKInAppMessageImmersive;
-      for button in inAppMessage.buttons as! [ABKInAppMessageButton]{
-        // Button action type is accessible via button.buttonClickActionType
-      }
-    }
 ```
 
 {% endtab %}

@@ -1,8 +1,7 @@
 ---
-hidden: true
 nav_title: Custom Triggering
 article_title: Customizing In-App Message Triggering for iOS
-platform: iOS
+platform: Swift
 page_order: 7
 description: "This reference article covers custom in-app messaging triggering for your iOS application."
 channel:
