@@ -68,7 +68,7 @@ Keep in mind that some HTML tags and attributes are not allowed as they may pote
 
 Check out the following lists for HTML tags and attributes that aren't allowed in your emails:
 {% details Expand for disallowed HTML tags %}
-- `<!doctype>`
+
 - `<applet>`
 - `<bgsound>`
 - `<embed>`
@@ -76,11 +76,8 @@ Check out the following lists for HTML tags and attributes that aren't allowed i
 - `<iframe>`
 - `<ilayer>`
 - `<layer>`
-- `<link>`
-- `<meta>`
 - `<object>`
 - `<script>`
-- `<title>`
 - `<xml>`
 - `<svg>`
 {% enddetails %}
